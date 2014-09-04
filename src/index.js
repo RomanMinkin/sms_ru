@@ -1,6 +1,6 @@
 var http = require('http');
 var querystring = require('querystring');
-var response_code = require('./response_code.json')
+var response_code = require('./response_code.json');
 
 var SMSru = function(){
 	this.params = [];
@@ -94,10 +94,10 @@ SMSru.prototype = {
 						response[result[0]] = result[1];
 					}
 				})
-				callback(response);
+				callback(null, response);
 			}});
 		}).on('error', function(e) {
-		  console.log("Error: " + e.message);
+			callback(e);
 		});
 	},
 }
